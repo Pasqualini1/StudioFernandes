@@ -90,12 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     });
 
-    const eventosIndividuais = agendamentos.map(ag => ({
-      title: ag.cliente,
-      start: new Date(ag.horario).toISOString(),
-      allDay: false,
-    }));
-
     const visualizacaoInicial = window.innerWidth < 768 ? 'timeGridDay' : 'dayGridMonth'; // <<<<<< ALTERAÇÃO AQUI
 
     calendarioInstancia = new FullCalendar.Calendar(calendarEl, {
@@ -111,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         minute: '2-digit',
         hour12: false
       },
-      events: [...eventos, ...eventosIndividuais],
+      events: eventos,
       eventContent: function(info) {
         const wrapper = document.createElement('div');
         const titleDiv = document.createElement('div');
