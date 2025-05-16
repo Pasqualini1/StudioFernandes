@@ -1,0 +1,61 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo do corpo com fundo gradiente */
+body {
+  background: linear-gradient(135deg, #d8a9c4, #c9b6e4);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #cfcfcf !important;
+}
+
+/* Estiliza o cartão de login */
+.card {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/* Título central */
+.card h1 {
+  color: #723c6e;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Inputs com cantos arredondados */
+input.form-control {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px;
+}
+
+/* Botão com estilo personalizado e total largura */
+button.btn-primary {
+  background-color: #723c6e;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px;
+  transition: background-color 0.3s;
+}
+
+button.btn-primary:hover {
+  background-color: #4c244a;
+}
+
+/* Mensagem de erro */
+#error-msg {
+  font-size: 14px;
+  margin-top: 10px;
+}

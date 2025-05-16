@@ -1,0 +1,660 @@
+/* === RESET GERAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === FUNDO E TEXTO === */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #d8a9c4, #c9b6e4);
+  color: #333;
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #cfcfcf !important;
+}
+
+/* === CABEÇALHO === */
+.header {
+  background-color: #723c6e !important;
+  color: white;
+  padding: 15px 20px;
+  /* Reduz o padding vertical (topo/baixo) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff !important;
+  margin: 5px !important;
+}
+
+
+.logo2 {
+  width: 125px;
+  /* Aumente conforme quiser */
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/*BOTAO DE SAIR*/
+#logout {
+  background-color: #ffffff;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#logout:hover {
+  background-color: #dedede;
+  transform: scale(1.01);
+}
+
+/* === FORMULÁRIO DE AGENDAMENTO === */
+form {
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+.btn-agendar {
+  background-color: #723c6e !important;
+  color: white !important;
+  font-weight: bold !important;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-agendar:hover {
+  background-color: #4c244a !important;
+  transform: scale(1.01);
+}
+
+/* === CALENDÁRIO === */
+#calendario {
+  margin: 20px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+.fc .fc-button {
+  background-color: #723c6e;
+  /* ou a cor que preferir */
+  color: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* === CORES DOS DIAS POR STATUS === */
+.verde {
+  background-color: #2ecc71 !important;
+  color: white !important;
+}
+
+.amarelo {
+  background-color: #f1c40f !important;
+  color: black !important;
+}
+
+.vermelho {
+  background-color: #e74c3c !important;
+  color: white !important;
+}
+
+/* === MODAL DE AGENDAMENTOS === */
+#modalAgendamentos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  /* ← este fundo escuro */
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modalAgendamentos .modal-content {
+  background: #fff;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  /* Limita a altura do modal */
+  overflow-y: auto;
+  /* Habilita rolagem interna */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#modalAgendamentos .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #ff0018;
+  transition: 0.3s;
+}
+
+#modalAgendamentos .close:hover {
+  color: #851a24;
+}
+
+#modalAgendamentos h2 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#listaAgendamentos {
+  list-style: none;
+  padding: 0;
+}
+
+#listaAgendamentos li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#listaAgendamentos li i {
+  margin-right: 5px;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* botoes dentro do modal*/
+.botoes-agendamento {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.botoes-agendamento button {
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.botoes-agendamento .editar {
+  background-color: #0d6efd;
+}
+
+.botoes-agendamento .editar:hover {
+  background-color: #0b5ed7;
+}
+
+.botoes-agendamento .finalizar {
+  background-color: #198754;
+}
+
+.botoes-agendamento .finalizar:hover {
+  background-color: #157347;
+}
+
+.botoes-agendamento .excluir {
+  background-color: #dc3545;
+}
+
+.botoes-agendamento .excluir:hover {
+  background-color: #bb2d3b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Força altura padrão maior para todos os dias no modo mês */
+.fc .fc-daygrid-day-frame {
+  height: 165px !important;
+  /* Ajuste se precisar mais ou menos espaço */
+  overflow-y: auto;
+  /* Adiciona rolagem se passar do limite */
+}
+
+/* Impede o botão "6 agendamentos" e mostra todos diretamente */
+.fc-daygrid-day-events {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Diminui a altura dos eventos para caberem mais */
+.fc-daygrid-event {
+  font-size: 0.65rem;
+  /* Reduz o texto dos eventos */
+  padding: 2px 4px !important;
+  line-height: 1.1 !important;
+}
+
+/*Cores do Calendario*/
+.fc-daygrid-day-number {
+  color: #000000;
+  /* Altere para a cor que você quiser */
+  font-weight: bold;
+  /* Opcional: deixa o número em negrito */
+}
+
+.fc-col-header-cell-cushion {
+  color: #ffffff;
+  /* Cor desejada */
+  font-weight: bold;
+  /* Opcional */
+}
+
+.fc-col-header-cell {
+  background-color: #723c6e;
+  /* Um rosa claro, por exemplo */
+}
+
+/* Cor dos botões 'Hoje', 'Mês', 'Semana', 'Dia' */
+.fc-button {
+  background-color: #723c6e !important;
+  border: none;
+  color: white;
+}
+
+.fc-button:hover {
+  background-color: #4c244a !important;
+}
+
+.fc-button-primary:not(:disabled).fc-button-active {
+  background-color: #4c244a !important;
+  border: 1 !important;
+}
+
+/* Cor das linhas de dia no modo mês */
+.fc-daygrid-day-frame {
+  background-color: #ffeef4 !important;
+}
+
+/* Remove borda azul do dia atual */
+.fc-day-today {
+  background-color: #ffffff !important;
+}
+
+/* Cor das células ao passar o mouse */
+.fc-day:hover {
+  background-color: #4c244a;
+}
+
+/*rmeove a barda feia*/
+/* Remove a borda azul escura ao clicar em um dia */
+.fc-daygrid-day-frame {
+  outline: none !important;
+  border: none !important;
+}
+
+/* Remove qualquer highlight azul de seleção */
+.fc-daygrid-day:focus,
+.fc-daygrid-day-frame:focus,
+.fc-daygrid-day.fc-day-today {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* (opcional) Remove a borda azul do botão "hoje" ao ser clicado */
+.fc-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#modalEditar {
+  display: none;
+  position: fixed;
+  z-index: 1060;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+#modalEditar .modal-conteudo {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 380px;
+  text-align: center;
+}
+
+#modalEditar input {
+  width: 100%;
+  padding: 8px;
+  margin: 15px 0;
+}
+
+#modalEditar .botoes-modal button {
+  min-width: 100px;
+  margin: 0 10px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #723c6e;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#modalEditar .botoes-modal button:hover {
+  background-color: #723c6e;
+}
+
+/* Remove fundo azul padrão do FullCalendar */
+.fc-event.evento-custom {
+  background-color: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
+/* AJUSTES GERAIS DO CALENDÁRIO */
+.fc {
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* CABEÇALHO MAIS COMPACTO */
+.fc-toolbar-title {
+  font-size: 1.4rem;
+}
+
+/* BOTÕES DE NAVEGAÇÃO */
+.fc .fc-button {
+  background-color: #82327D;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  color: white;
+}
+
+.fc .fc-button:hover {
+  background-color: #a44ea2;
+}
+
+/* CABEÇALHO DOS DIAS */
+.fc .fc-col-header-cell-cushion {
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* EVENTOS MAIS ENCAIXADOS */
+.fc-event {
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* TÍTULO DO DIA */
+.fc .fc-daygrid-day-number {
+  font-size: 0.8rem;
+  padding-right: 4px;
+}
+
+/* Altera o fundo das colunas de dias */
+.fc-daygrid-day,
+.fc-timegrid-col {
+  background-color: #82327D !important;
+  /* roxo claro, igual às outras colunas */
+}
+
+/* Altera o fundo das áreas de horário (parte inferior) */
+.fc-timegrid-slot {
+  background-color: #f8e5f8 !important;
+}
+
+/* Remove fundo branco do dia atual (caso esteja sendo destacado) */
+.fc-day-today,
+.fc-timegrid-col.fc-day-today {
+  background-color: #82327D !important;
+}
+
+
+/* == RESPONDIVIDADE == */
+/* MOBILE - até 768px (ideal para iPhone, Android, etc) */
+@media (max-width: 414px) {
+  .header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header h1 {
+    display: none;
+  }
+
+  .logo2 {
+    width: 125px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  #logout {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+  }
+
+  .logout-text {
+    display: none;
+  }
+
+  form {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  #calendario {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  #modalAgendamentos .modal-content {
+    width: 95%;
+    max-height: 80vh;
+    /* Limita a altura do modal */
+    padding: 20px;
+    overflow-y: auto;
+    /* Habilita rolagem vertical */
+    border-radius: 10px;
+  }
+
+  #modalAgendamentos h2 {
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  #listaAgendamentos {
+    max-height: 60vh;
+    /* Limita a altura da lista dentro do modal */
+    overflow-y: auto;
+    /* Habilita scroll interno se necessário */
+  }
+
+  #listaAgendamentos li {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .botoes-agendamento {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botoes-agendamento button {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  #modalEditar .modal-conteudo {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #modalEditar input {
+    padding: 10px;
+  }
+
+  #modalEditar .botoes-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #modalEditar .botoes-modal button {
+    width: 100%;
+  }
+
+  /* Ajustes no calendário do FullCalendar */
+  .fc {
+    width: 100% !important;
+    max-width: 110vw;
+    overflow-x: auto;
+    /* Permitido scroll horizontal para evitar corte de colunas */
+  }
+
+  /* Título (ex: "maio de 2025") menor */
+  .fc .fc-toolbar-title {
+    font-size: 14px !important;
+  }
+
+  /* Botões (Hoje, Semana, Mês etc) menores */
+  .fc .fc-button {
+    font-size: 12px !important;
+    padding: 2px 6px !important;
+  }
+
+  /* Cabeçalhos e números dos dias menores */
+  .fc .fc-col-header-cell-cushion,
+  .fc .fc-daygrid-day-number {
+    font-size: 10px;
+  }
+
+  /* Texto dos eventos no modo grade (ex: "3 agendamentos") menor */
+  .fc-daygrid-event {
+    font-size: 10px !important;
+    padding: 2px 4px !important;
+  }
+
+  /* Altura mínima dos dias na grade */
+  .fc .fc-daygrid-day-frame {
+    height: auto !important;
+    min-height: 50px;
+  }
+
+  /* Impede corte de colunas ao lado */
+  .fc-scrollgrid-section-body {
+    overflow-x: auto !important;
+  }
+
+  /* Melhor exibição no modo semana (timeGridWeek) */
+  .fc .fc-timegrid-event {
+    font-size: 10px !important;
+    padding: 1px 2px !important;
+  }
+
+  .fc .fc-timegrid-col {
+    min-width: 60px !important;
+  }
+
+  /* Corrige quebra do horário dentro do evento */
+  .fc-event-time {
+    display: block;
+    font-weight: bold;
+    font-size: 11px;
+  }
+
+  /* Mantém largura proporcional e evita quebra nas colunas */
+  .fc .fc-scrollgrid-sync-table {
+    table-layout: fixed !important;
+  }
+
+  /* Remove espaços desnecessários entre colunas */
+  .fc .fc-timegrid-body {
+    overflow-x: auto !important;
+  }
+
+  /* Altera o fundo das colunas de dias */
+  .fc-daygrid-day,
+  .fc-timegrid-col {
+    background-color: #82327D !important;
+    /* roxo claro, igual às outras colunas */
+  }
+
+  /* Altera o fundo das áreas de horário (parte inferior) */
+  .fc-timegrid-slot {
+    background-color: #f8e5f8 !important;
+  }
+
+  /* Remove fundo branco do dia atual (caso esteja sendo destacado) */
+  .fc-day-today,
+  .fc-timegrid-col.fc-day-today {
+    background-color: #82327D !important;
+  }
+
+}
