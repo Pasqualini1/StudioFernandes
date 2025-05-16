@@ -4,7 +4,7 @@
   "description": "Aplicativo para agendamento de Horarios",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "linear-gradient(135deg, #d8a9c4, #c9b6e4)",
+  "background_color": "#d8a9c4",
   "theme_color": "#d8a9c4"
   "icons": [
     {
