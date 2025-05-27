@@ -1,0 +1,56 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #a88bbf, #d7c5e8);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #1c1c1e;
+}
+
+/* Imagem da logo no lado esquerdo */
+.login-logo {
+  width: 150px;
+  height: auto;
+  margin-top: -60px;
+}
+
+/* Estiliza o cartão de login */
+.card {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/* Título central */
+.card h1 {
+  color: #723c6e;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Inputs com cantos arredondados */
+input.form-control {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px;
+}
+
+/* Botão com estilo personalizado e total largura */
+button.btn-primary {
+  background-color: #723c6e;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px;
+  transition: background-color 0.3s;
+}
+
+button.btn-primary:hover {
+  background-color: #4c244a;
+}
+
+/* Mensagem de erro */
+#error-msg {
+  font-size: 14px;
+  margin-top: 10px;
+}

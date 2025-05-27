@@ -1,0 +1,466 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #a88bbf, #d7c5e8);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #1c1c1e;
+}
+
+/* === CABEÇALHO === */
+.header {
+  background-color: #723c6e;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin: 5px 0;
+}
+
+.logo2 {
+  width: 120px;
+  height: auto;
+}
+
+/* === BOTÃO DE SAIR === */
+/* === BOTÃO DE SAIR === */
+.logout {
+  background-color: #ffffff;
+  color: #333;
+  padding: 8px 16px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+}
+
+.logout:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+  color: #000;
+}
+
+.container {
+  max-width: 410px;
+  margin: auto;
+  margin-top: 50px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  background-color: #723c6e;
+  padding: 8px;
+  color: white;
+  border-radius: 10px;
+
+}
+
+.nav-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.nav-btn:hover {
+  transform: scale(1.2);
+}
+
+.semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  background-color: #8000ff;
+  padding: 8px;
+  color: white;
+  border-radius: 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.day {
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.day:hover {
+  background-color: #ddd;
+}
+
+.empty {
+  background-color: transparent;
+  cursor: default;
+}
+
+/* Remove estilos da bolinha se ainda estiver usando */
+.day-indicator {
+  display: none;
+}
+
+/* === CORES CORRETAS PARA OS DIAS COM BASE NA CLASSE `.day` === */
+.day.green {
+  background-color: #66ff70 !important;
+  /* Verde claro */
+  color: #000;
+}
+
+.day.yellow {
+  background-color: #ffe14c !important;
+  /* Amarelo claro */
+  color: #000;
+}
+
+.day.red {
+  background-color: #ff6666 !important;
+  /* Vermelho claro */
+  color: #000;
+}
+
+
+/* Botão flutuante */
+#btnFlutuante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #723c6e;
+  transition: background-color 0.3s;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  padding: 0;
+  font-size: 28px;
+}
+
+#btnFlutuante:hover {
+  background-color: #5a2d54;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteúdo do modal */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90vw;
+  /* largura responsiva */
+  max-width: 430px;
+  /* largura máxima */
+  max-height: 100vh;
+  /* limite de altura */
+  box-sizing: border-box;
+}
+
+
+/* Botão de fechar */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  color: red;
+  background: none;
+  border: none;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+input,
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+button.enviar {
+  margin-top: 12px;
+  background-color: #723c6e;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.enviar:hover {
+  background-color: #5a2d54;
+}
+
+/* Modal para visualizar agendamentos */
+.modalAgendamentos {
+  display: none;
+  /* oculto por padrão */
+  position: fixed;
+  z-index: 2100;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* fundo escurecido */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteúdo do modal */
+.modal-contentAgendamentos {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90vw;
+  /* largura responsiva */
+  max-width: 430px;
+  /* largura máxima */
+  max-height: 100vh;
+  /* altura máxima para caber na tela */
+  overflow-y: auto;
+  /* permite scroll se passar do limite */
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Título do modal */
+.modal-contentAgendamentos h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #000000;
+  font-size: 26px;
+  align-items: center;
+}
+
+/* Span que mostra a data selecionada */
+#dataSelecionada {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ff0000;
+  display: block;
+}
+
+/* Lista de agendamentos */
+#listaAgendamentos {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Estilo individual dos itens de agendamento */
+#listaAgendamentos .item-agendamento {
+  padding: 8px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Espaçamento entre parágrafos dentro do item */
+#listaAgendamentos .item-agendamento p {
+  margin: 1px 0;
+}
+
+/* Bolinha de status */
+.status-indicador {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.status-indicador.atendido {
+  background-color: green;
+}
+
+.status-indicador.pendente {
+  background-color: red;
+}
+
+.botao-editar,
+.botao-finalizar,
+.botao-excluir {
+  padding: 6px 12px;
+  margin: 5px 3px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.botao-editar {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.botao-finalizar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.botao-excluir {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Estilização do modal de edição */
+.modalEditarAgendamentos {
+  display: none;
+  /* oculto por padrão */
+  position: fixed;
+  z-index: 2100;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* fundo escurecido */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteúdo do modal */
+.modal-contentEditarAgendamentos {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90vw;
+  /* largura responsiva */
+  max-width: 430px;
+  /* largura máxima */
+  max-height: 100vh;
+  /* altura máxima para caber na tela */
+  overflow-y: auto;
+  /* permite scroll se passar do limite */
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+button.btSalvarEditarAgendamento {
+  margin-top: 12px;
+  background-color: #723c6e;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.btSalvarEditarAgendamento:hover {
+  background-color: #5a2d54;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 414px) {
+  .header {
+    justify-content: space-between;
+    padding: 10px 15px;
+    align-items: center;
+  }
+
+  .header h1 {
+    display: none;
+  }
+
+  #logoutDesktop {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 60px;
+    /* Ajuste com base na altura do header */
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+}
