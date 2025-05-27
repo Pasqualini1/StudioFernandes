@@ -240,7 +240,7 @@ window.addEventListener('click', function(e) {
 
 function logout() {
   // Aqui você pode colocar o redirecionamento real depois
-  window.location.href = 'https://studiofernandes.rf.gd/index.html';
+  window.location.href = 'index.html';
 }
 
 
