@@ -18,7 +18,7 @@ document.getElementById("login-form").addEventListener("submit", function(e) {
     senhaDigitada === credenciais.password
   ) {
     // Login bem-sucedido, redireciona
-    window.location.href = "https://studiofernandes.rf.gd/agenda.html";
+    window.location.href = "agenda.html";
  // Redirecione para a página da agenda
   } else {
     // Mostra mensagem de erro
