@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 // Variáveis globais
 let editandoIndex = null;
 let dataAtual = new Date();
@@ -246,4 +248,5 @@ function logout() {
 
 // Inicializa o calendário
 gerarCalendario(dataAtual);
+});
 
