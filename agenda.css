@@ -251,6 +251,14 @@ select {
   border: 1px solid #ccc;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #4c244a !important;
+}
+
 button.enviar {
   margin-top: 12px;
   background-color: #723c6e;
