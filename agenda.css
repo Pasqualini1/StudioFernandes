@@ -8,6 +8,13 @@ body {
   color: #1c1c1e;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* === CABEÇALHO === */
 .header {
   background-color: #723c6e;
