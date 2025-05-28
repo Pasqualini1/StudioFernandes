@@ -54,3 +54,10 @@ button.btn-primary:hover {
   font-size: 14px;
   margin-top: 10px;
 }
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
