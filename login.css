@@ -30,6 +30,7 @@ body {
 
 /* Inputs com cantos arredondados */
 input.form-control {
+  border: 2px solid #723c6e;
   border-radius: 10px;
   font-size: 16px;
   padding: 12px;
@@ -60,4 +61,5 @@ textarea:focus,
 select:focus {
   outline: none !important;
   box-shadow: none !important;
+  border-color: #4c244a !important;
 }
