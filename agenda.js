@@ -44,11 +44,21 @@ function gerarCalendario(data) {
     divDia.classList.add("day");
     divDia.innerText = dia;
 
+    // Aqui calculamos o dia da semana atual
+    const dataAtualDia = new Date(ano, mes, dia);
+    const diaSemana = dataAtualDia.getDay();
+
+    if (diaSemana === 0) {
+      divDia.classList.add("domingo");
+    } else if (diaSemana === 6) {
+      divDia.classList.add("sabado");
+    }
+
     const agsDoDia = agendamentos.filter(a => {
-  if (!a.data || typeof a.data !== 'string' || !a.data.includes('-')) return false;
-  const [anoAg, mesAg, diaAg] = a.data.split("-").map(Number);
-  return diaAg === dia && mesAg === mes + 1 && anoAg === ano;
-});
+      if (!a.data || typeof a.data !== 'string' || !a.data.includes('-')) return false;
+      const [anoAg, mesAg, diaAg] = a.data.split("-").map(Number);
+      return diaAg === dia && mesAg === mes + 1 && anoAg === ano;
+    });
 
     if (agsDoDia.length >= 6) divDia.classList.add("red");
     else if (agsDoDia.length >= 3) divDia.classList.add("yellow");
@@ -96,9 +106,15 @@ function exibirAgendamentosDia(dia, mes, ano) {
         <p><strong>Data:</strong> ${dataFormatada} <strong>Hora:</strong> ${ag.hora}</p>
         <p><strong>WhatsApp:</strong> ${ag.whats}</p>
         <div class="botoes-item">
-          <button class="botao-editar" onclick="editarAgendamento(${index}, ${dia}, ${mes}, ${ano})">EDITAR</button>
-          <button class="botao-finalizar" onclick="finalizarAgendamento(${index}, ${dia}, ${mes}, ${ano})">FINALIZAR</button>
-          <button class="botao-excluir" onclick="excluirAgendamento(${index})">EXCLUIR</button>
+          <button class="botao-editar" onclick="editarAgendamento(${index}, ${dia}, ${mes}, ${ano})">
+            <i class="fas fa-pen"></i> EDITAR
+          </button>
+          <button class="botao-finalizar" onclick="finalizarAgendamento(${index}, ${dia}, ${mes}, ${ano})">
+            <i class="fas fa-check"></i> FINALIZAR
+          </button>
+          <button class="botao-excluir" onclick="excluirAgendamento(${index})">
+            <i class="fas fa-trash"></i> EXCLUIR
+          </button>
         </div>
         <hr>
       `;
@@ -140,7 +156,9 @@ formAgendamento.addEventListener('submit', e => {
 
   const dados = {
     nome: formAgendamento.nome.value,
-    servico: formAgendamento.servico.value,
+    servico: Array.from(formAgendamento.querySelectorAll('input[name="servicos"]:checked'))
+      .map(cb => cb.value)
+      .join(', '),
     rua: formAgendamento.rua.value,
     numero: formAgendamento.numero.value,
     data: formAgendamento.data.value,
@@ -158,6 +176,7 @@ formAgendamento.addEventListener('submit', e => {
   formAgendamento.reset();
   gerarCalendario(dataAtual);
 });
+
 
 // Finalizar agendamento
 function finalizarAgendamento(index, dia, mes, ano) {
@@ -201,16 +220,15 @@ formEditar.addEventListener("submit", (e) => {
 
   if (editandoIndex !== null) {
     const { index, dia, mes, ano } = editandoIndex;
-
     agendamentos[index] = {
       ...agendamentos[index],
-      nome: document.getElementById("editarNome").value,
-      servico: document.getElementById("editarServico").value,
-      rua: document.getElementById("editarRua").value,
-      numero: document.getElementById("editarNumero").value,
-      data: document.getElementById("editarData").value,
-      hora: document.getElementById("editarHora").value,
-      whats: document.getElementById("editarWhats").value
+      nome: formEditar.editarNome.value,
+      servico: formEditar.editarServico.value,
+      rua: formEditar.editarRua.value,
+      numero: formEditar.editarNumero.value,
+      data: formEditar.editarData.value,
+      hora: formEditar.editarHora.value,
+      whats: formEditar.editarWhats.value
     };
 
     localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
@@ -221,5 +239,5 @@ formEditar.addEventListener("submit", (e) => {
   }
 });
 
-// Inicializar calendário
+// Inicializa calendário ao carregar a página
 gerarCalendario(dataAtual);
