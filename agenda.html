@@ -2,43 +2,39 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Fernandes | Agenda</title>
 
   <link rel="icon" href="icons/logo1.png" type="image/x-icon" />
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="agenda.css">
+  <link rel="stylesheet" href="agenda.css" />
 </head>
 
 <body>
 
   <!-- Cabeçalho -->
   <header class="header d-flex justify-content-between align-items-center px-3 py-2">
-    <!-- Logo e Título -->
     <div class="d-flex align-items-center gap-3">
-      <img src="/icons/logo2.png" alt="Logo Studio Fernandes" class="logo2" />
+      <img src="icons/logo2.png" alt="Logo Studio Fernandes" class="logo2" />
       <h1 class="header h1">Studio Fernandes</h1>
     </div>
 
-    <!-- Botão de Logout (desktop) -->
     <button id="logoutDesktop" class="logout" aria-label="Sair" onclick="logout()">
-      <i class="bi bi-box-arrow-right me-1"></i>
+      <i class="fa-solid fa-right-from-bracket me-1"></i>
       <span class="logout-text">Sair</span>
     </button>
 
-    <!-- Ícone de Menu Hamburguer -->
     <button class="menu-toggle d-md-none" aria-label="Abrir Menu" onclick="toggleMenu()">
-      <i class="bi bi-list fs-2"></i>
+      <i class="fa-solid fa-bars fs-2"></i>
     </button>
 
-    <!-- Menu Mobile (oculto por padrão) -->
     <div id="mobileMenu" class="mobile-menu d-none">
       <button class="btn btn-danger w-100 my-2" onclick="logout()">Sair</button>
     </div>
@@ -67,7 +63,7 @@
 
   <!-- Botão flutuante -->
   <button id="btnFlutuante" class="btn btn-primary rounded-circle position-fixed">
-    <i class="bi bi-plus-lg"></i>
+    <i class="fa-solid fa-plus"></i>
   </button>
 
   <!-- Modal de agendamento -->
@@ -76,26 +72,40 @@
       <span id="fecharModal" class="close">&times;</span>
       <h2 class="mb-3">Novo Agendamento</h2>
       <form id="formAgendamento" class="d-grid gap-2">
-        <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
 
-        <label for="servico">Serviço:</label>
-        <input type="text" class="form-control" id="servico" name="servico" placeholder="Serviço">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required />
+
+        <label>Serviços:</label>
+        <div class="d-flex gap-4 fs-3">
+          <label>
+            <input type="checkbox" name="servicos" value="pé" />
+            <i>Pé</i>
+          </label>
+          <label>
+            <input type="checkbox" name="servicos" value="mão" />
+            <i>Mão</i>
+          </label>
+          <label>
+            <input type="checkbox" name="servicos" value="sobrancelha" />
+            <i>Sobrancelha</i>
+          </label>
+        </div>
 
         <label for="rua">Rua:</label>
-        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua">
+        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua" />
 
         <label for="numero">Número:</label>
-        <input type="text" class="form-control" id="numero" name="numero" placeholder="Nmr da Casa">
+        <input type="text" class="form-control" id="numero" name="numero" placeholder="Nmr da Casa" />
 
         <label for="data">Data:</label>
-        <input type="date" class="form-control" id="data" name="data" required>
+        <input type="date" class="form-control" id="data" name="data" required />
 
         <label for="hora">Hora:</label>
-        <input type="time" class="form-control" id="hora" name="hora" required>
+        <input type="time" class="form-control" id="hora" name="hora" required />
 
         <label for="whats">WhatsApp:</label>
-        <input type="tel" class="form-control" id="whats" name="whats" placeholder="(00) 00000-0000">
+        <input type="tel" class="form-control" id="whats" name="whats" placeholder="(00) 00000-0000" />
 
         <button class="btn btn-success enviar" type="submit">Salvar</button>
       </form>
@@ -117,13 +127,13 @@
       <span id="fecharModalEditar" class="close">&times;</span>
       <h2>Editar Agendamento</h2>
       <form id="formEditar" class="d-grid gap-2">
-        <input type="text" class="form-control" id="editarNome" placeholder="Nome">
-        <input type="text" class="form-control" id="editarServico" placeholder="Serviço">
-        <input type="text" class="form-control" id="editarRua" placeholder="Rua">
-        <input type="text" class="form-control" id="editarNumero" placeholder="Número">
-        <input type="date" class="form-control" id="editarData">
-        <input type="time" class="form-control" id="editarHora">
-        <input type="text" class="form-control" id="editarWhats" placeholder="WhatsApp">
+        <input type="text" class="form-control" id="editarNome" placeholder="Nome" />
+        <input type="text" class="form-control" id="editarServico" placeholder="Serviço" />
+        <input type="text" class="form-control" id="editarRua" placeholder="Rua" />
+        <input type="text" class="form-control" id="editarNumero" placeholder="Número" />
+        <input type="date" class="form-control" id="editarData" />
+        <input type="time" class="form-control" id="editarHora" />
+        <input type="text" class="form-control" id="editarWhats" placeholder="WhatsApp" />
         <button type="submit" class="btn btn-primary btSalvarEditarAgendamento">Salvar</button>
       </form>
     </div>
@@ -134,6 +144,7 @@
 
   <!-- Script personalizado -->
   <script src="agenda.js"></script>
+
 </body>
 
 </html>
