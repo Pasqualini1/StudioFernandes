@@ -8,13 +8,6 @@ body {
   color: #1c1c1e;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
 /* === CABEÇALHO === */
 .header {
   background-color: #723c6e;
@@ -116,7 +109,7 @@ select:focus {
 }
 
 .day {
-  background-color: #f1f1f1;
+  background-color: #ede2ff;
   border-radius: 8px;
   height: 50px;
   display: flex;
@@ -130,13 +123,20 @@ select:focus {
 }
 
 .day:hover {
-  background-color: #ddd;
+  background-color: #d6bdff;
 }
 
 .empty {
   background-color: transparent;
   cursor: default;
 }
+
+.day.sabado,
+.day.domingo {
+  color: #545454;
+  /* ou qualquer cor mais clara */
+}
+
 
 /* Remove estilos da bolinha se ainda estiver usando */
 .day-indicator {
@@ -161,7 +161,6 @@ select:focus {
   /* Vermelho claro */
   color: #000;
 }
-
 
 /* Botão flutuante */
 #btnFlutuante {
@@ -212,7 +211,7 @@ select:focus {
   /* largura responsiva */
   max-width: 430px;
   /* largura máxima */
-  max-height: 100vh;
+  max-height: 110vh;
   /* limite de altura */
   box-sizing: border-box;
 }
@@ -441,6 +440,8 @@ button.btSalvarEditarAgendamento {
 button.btSalvarEditarAgendamento:hover {
   background-color: #5a2d54;
 }
+
+
 
 /* === RESPONSIVIDADE === */
 @media (max-width: 414px) {
