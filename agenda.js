@@ -1,4 +1,3 @@
-
 // Variáveis globais
 let editandoIndex = null;
 let dataAtual = new Date();
@@ -46,9 +45,10 @@ function gerarCalendario(data) {
     divDia.innerText = dia;
 
     const agsDoDia = agendamentos.filter(a => {
-      const [anoAg, mesAg, diaAg] = a.data.split("-").map(Number);
-      return diaAg === dia && mesAg === mes + 1 && anoAg === ano;
-    });
+  if (!a.data || typeof a.data !== 'string' || !a.data.includes('-')) return false;
+  const [anoAg, mesAg, diaAg] = a.data.split("-").map(Number);
+  return diaAg === dia && mesAg === mes + 1 && anoAg === ano;
+});
 
     if (agsDoDia.length >= 6) divDia.classList.add("red");
     else if (agsDoDia.length >= 3) divDia.classList.add("yellow");
@@ -164,10 +164,10 @@ function finalizarAgendamento(index, dia, mes, ano) {
   agendamentos[index].status = 'atendido';
   localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
   gerarCalendario(dataAtual);
-  exibirAgendamentosDia(dia, mes, ano); // Atualiza modal mantendo ele aberto
+  exibirAgendamentosDia(dia, mes, ano);
 }
 
-//Excluir agendamento
+// Excluir agendamento
 function excluirAgendamento(index) {
   if (confirm("Tem certeza que deseja excluir este agendamento?")) {
     const agendamentoExcluido = agendamentos[index];
@@ -214,37 +214,12 @@ formEditar.addEventListener("submit", (e) => {
     };
 
     localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
-
-    gerarCalendario(dataAtual);
     modalEditar.style.display = "none";
-    exibirAgendamentosDia(dia, mes, ano); // Atualiza modal automaticamente
     editandoIndex = null;
+    gerarCalendario(dataAtual);
+    exibirAgendamentosDia(dia, mes, ano);
   }
 });
 
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('d-none');
-}
-
-// Correção no botão de fechar ao clicar fora
-window.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobileMenu');
-  const button = document.querySelector('.menu-toggle');
-
-  if (!menu.contains(e.target) && !button.contains(e.target)) {
-    if (!menu.classList.contains('d-none')) {
-      menu.classList.add('d-none');
-    }
-  }
-});
-
-function logout() {
-  // Aqui você pode colocar o redirecionamento real depois
-  window.location.href = 'index.html';
-}
-
-
-// Inicializa o calendário
+// Inicializar calendário
 gerarCalendario(dataAtual);
-
